@@ -4,44 +4,59 @@ _How Types can increase developer productivity_
 
 |>
 
-### Example the first
+### Context: A Booking webapp
 
-BookingCode is just a String
+We're rewriting a legacy application that would store bookings (hotel room, kayaks, dinner tables, ...)
+
+Bookings are still handled in the old legacy app by the backoffice, so we'll need to forward our Bookings made by the webapp.
+
+|>
+
+`BookingCode` is just a `String`
 
 ...or is it? <!-- .element: class="fragment" data-fragment-index="2" -->
 
 <|
 
-### Slide 2
+### Example 1
 
-![](slides/img/tea.png)
-
-<|
-
-### Slide 2.1
-
-* Bullet list item 1
-* Bullet list item 2 <!-- .element: class="fragment" data-fragment-index="2" -->
-* Bullet list item 3 <!-- .element: class="fragment" data-fragment-index="3" -->
-
-All of the above lead to faster feedback during development, causing less bugs. <!-- .element: class="fragment" data-fragment-index="6" -->
+Where we still were naive and thought `BookingCode` was just a `String`.
 
 |>
 
-### Slide 2.2
+Think about <i>when</i> we encounter the bug, and how it relates to our webapp lifecycle.
 
+At what point in the flow does the error happen? <!-- .element: class="fragment" data-fragment-index="2" -->
+
+That's right. It doesn't. It happens outside our application. <!-- .element: class="fragment" data-fragment-index="3" -->
 
 <|
 
-# Demo
+### Example 2
+
+Let's advance it to at least occur inside our application.
+
+|>
+
+Here we just introduced domain validation on a `Booking`.
+
+Let's see what code breaks.  <!-- .element: class="fragment" data-fragment-index="2" -->
+
+|>
+
+Again, at what point in the flow does the error happen?
+
+Think about when you'd be debugging, what's your next intuition? <!-- .element: class="fragment" data-fragment-index="2" -->
+
+If you thought to move up the BREAKING POINT in the flow, you're on to something. <!-- .element: class="fragment" data-fragment-index="3" -->
 
 <|
 
-# Resources if you wanna learn more
+### Example 3
 
-* [The ElmLang website](http://elm-lang.org/)
-* [The Elm Architecture](https://guide.elm-lang.org/architecture/)
-* [Diffent examples](http://elm-lang.org/examples)
-* [Petindr Elm Kata](https://github.com/jansabbe/petindr_elm_kata)
-* [LiveCoding Petindr Elm Kata](https://www.youtube.com/channel/UC-0Zos25VCU6h6bDiv7bh9w/videos)
-* [Elmlang Slack](https://elmlang.herokuapp.com/)
+Let's advance it to occur as soon as it enters our application: in the Resource.
+
+We'll use a Wrapper object called BookingCode that encapsulates its rules.
+
+|>
+
