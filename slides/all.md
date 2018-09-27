@@ -4,11 +4,11 @@ _How Types can increase developer productivity_
 
 |>
 
-### Slide 1.1
+### Example the first
 
-* Bullet list item 1
-* Bullet list item 2 <!-- .element: class="fragment" data-fragment-index="2" -->
-* Bullet list item 3 <!-- .element: class="fragment" data-fragment-index="3" -->
+BookingCode is just a String
+
+...or is it? <!-- .element: class="fragment" data-fragment-index="2" -->
 
 <|
 
