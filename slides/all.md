@@ -216,40 +216,40 @@ BookingCode("87654321") <!-- .element: class="fragment" data-fragment-index="2" 
 ## Sealed classes (aka traits, aka union types)
 Kotlin also has "sealed classes" allowing you to be more expressive with your types.
 
-But we're going to take a dip into another language to show this feature more easily
-
-<|
-
-# Elm! <3 <3 <3
-
 |>
 
-## Union Types
+## Sealed classes
 
-Given a Union Type Msg:
+Given this Sealed Class:
 
-    type Msg 
-        = BookingEnterClicked String
-        | BookingSubmitClicked
+    sealed class RoverCommand
+    data class Forward(val steps: Int): RoverCommand()
+    data class Backward(val steps: Int): RoverCommand()
+    object Left: RoverCommand() //these don't take arguments
+    object Right: RoverCommand() //these don't take arguments
 
 |>
 
 You can do pattern matching:
 
-    update event = 
-        case msg of event
-            BookingEntered txt -> enterBooking txt
-            BookingSubmitted -> submitBooking
+    fun handle(cmd: RoverCommand) = when(cmd) {
+        is Forward -> moveForward(cmd.steps)
+        is Backward -> moveBackward(cmd.steps)
+        is Left -> turnLeft()
+        is Right -> turnRight()
+    }
 
 |>
 
 This won't compile:
 
-    update event = 
-            case msg of event
-                BookingEntered txt -> enterBooking txt
+    fun handle(cmd: RoverCommand) = when(cmd) {
+        is Forward -> moveForward(cmd.steps)
+        is Left -> turnLeft()
+        is Right -> turnRight()
+    }
 
-The Elm compiler will tell you you're missing the case of BookingSubmitted
+The compiler will tell you you're missing the case of Backward
 
 |>
 
@@ -263,6 +263,6 @@ Not using Types **costs** time, so:
 
 * Write Wrapper classes (from the start!) <!-- .element: class="fragment" data-fragment-index="2" -->
 * Kotlin has a set of features that can help with that  <!-- .element: class="fragment" data-fragment-index="3" -->
-* Use Union Types whenever you can to learn asap about potential bugs <!-- .element: class="fragment" data-fragment-index="4" -->
+* Use Sealed classes whenever you can to learn asap about potential bugs <!-- .element: class="fragment" data-fragment-index="4" -->
 
 Thanks! <!-- .element: class="fragment" data-fragment-index="5" -->
