@@ -1,11 +1,13 @@
 package be.swsb.typesafety.example5.domain.booking
 
+import java.time.LocalDateTime
 import java.util.*
 
 class Booking
 
-private constructor(val id: UUID = UUID.randomUUID(),
-                    val bookingCode: BookingCode?) {
+constructor(val id: UUID = UUID.randomUUID(),
+                    val bookingCode: BookingCode? = null,
+                    val reservationDate: LocalDateTime = LocalDateTime.now()) {
     //imagine a bunch of other fields
 
     fun getBookingCodeAsString(): String? {

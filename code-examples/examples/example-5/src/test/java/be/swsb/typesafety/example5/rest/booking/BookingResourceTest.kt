@@ -1,5 +1,6 @@
 package be.swsb.typesafety.example5.rest.booking
 
+import be.swsb.typesafety.example5.domain.booking.Booking
 import be.swsb.typesafety.example5.domain.booking.BookingCode
 import be.swsb.typesafety.example5.service.booking.BookingService
 import be.swsb.typesafety.test.UnitTest
@@ -32,4 +33,13 @@ internal class BookingResourceTest : UnitTest() {
 
         assertThat(actual).isEqualTo(newUUID)
     }
+
+    @Test
+    fun chainingOptionalValues() {
+        val recurringReservation = RecurringReservation()
+
+        recurringReservation.booking?.bookingCode?.asString()
+    }
+
+    class RecurringReservation(val booking: Booking? = null)
 }

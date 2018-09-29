@@ -135,6 +135,10 @@ Thanks for NPE's Java! <!-- .element: class="fragment" data-fragment-index="4" -
 
 ### I guess we fix it with Optional?
 
+<|
+
+### Java's Optional
+
 Optional **does** express that some property might not exist.
 
 But it's not very easy to work with.
