@@ -72,9 +72,12 @@ Do you think you can learn about possible bugs like this faster? <!-- .element: 
 
 <|
 
-### The curious case we missed (Example 4)
+### Example 4
+#### The curious case we missed
 
 This is me gambling you didn't pay too much attention :)
+
+|>
 
 Who can tell me what we missed? More specifically in the Booking. <!-- .element: class="fragment" data-fragment-index="2" -->
 
@@ -107,3 +110,53 @@ And there is! <!-- .element: class="fragment" data-fragment-index="2" -->
 <|
 
 # Kotlin! <3
+
+|>
+
+## Optional
+
+Kotlin has the concept of optionality built-in
+
+val code: BookingCode  //non optional <!-- .element: class="fragment" data-fragment-index="2" -->
+
+val code: BookingCode? // optional <!-- .element: class="fragment" data-fragment-index="3" -->
+
+|>
+
+## Immutability
+
+Kotlin also has the concept of immutability built-in:
+
+data class BookingCode(val code: String) <!-- .element: class="fragment" data-fragment-index="2" -->
+
+No longer do you have to write tedious equals() and hashcode() reflection-equals implementations! <!-- .element: class="fragment" data-fragment-index="3" -->
+
+|>
+
+## Named Parameters
+
+Kotlin also has named parameters, essentially removing the need for TestBuilders
+
+val booking: Booking = Booking(bookingCode = BookingCode("87654321"), name = "snarf") <!-- .element: class="fragment" data-fragment-index="2" -->
+
+|>
+
+## Extension functions
+
+Kotlin also has extension functions, replacing "defaults" in TestBuilders
+
+fun BookingCode.Companion.defaultBookingCode("87654321") <!-- .element: class="fragment" data-fragment-index="2" -->
+
+|>
+
+## Sealed classes (aka traits, aka union types)
+Kotlin also has "sealed classes" allowing you to be more expressive with your types.
+
+But we're going to take a dip into another language to show this feature more easily
+
+<|
+
+# Elm! <3 <3 <3
+
+|>
+
