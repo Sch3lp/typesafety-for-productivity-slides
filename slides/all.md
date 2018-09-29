@@ -183,6 +183,18 @@ No longer do you have to write tedious equals() and hashcode() reflection-equals
 
 |>
 
+## Closed by default
+
+You ever really tried to prevent access to methods or classes of an Aggregate in Java?
+
+Here's how you do it in Kotlin:
+
+class Booking() <!-- .element: class="fragment" data-fragment-index="2" -->
+
+In Kotlin if you want a public class or method you'll have to add the "open" modifier to it <!-- .element: class="fragment" data-fragment-index="3" -->
+
+|>
+
 ## Named Parameters
 
 Kotlin also has named parameters, essentially removing the need for TestBuilders
@@ -212,3 +224,45 @@ But we're going to take a dip into another language to show this feature more ea
 
 |>
 
+## Union Types
+
+Given a Union Type Msg:
+
+    type Msg 
+        = BookingEnterClicked String
+        | BookingSubmitClicked
+
+|>
+
+You can do pattern matching:
+
+    update event = 
+        case msg of event
+            BookingEntered txt -> enterBooking txt
+            BookingSubmitted -> submitBooking
+
+|>
+
+This won't compile:
+
+    update event = 
+            case msg of event
+                BookingEntered txt -> enterBooking txt
+
+The Elm compiler will tell you you're missing the case of BookingSubmitted
+
+|>
+
+This is about as "early" as one can get into knowing when a bug would happen.
+
+<|
+
+# Conclusion
+
+Not using Types **costs** time, so:
+
+* Write Wrapper classes (from the start!) <!-- .element: class="fragment" data-fragment-index="2" -->
+* Kotlin has a set of features that can help with that  <!-- .element: class="fragment" data-fragment-index="3" -->
+* Use Union Types whenever you can to learn asap about potential bugs <!-- .element: class="fragment" data-fragment-index="4" -->
+
+Thanks! <!-- .element: class="fragment" data-fragment-index="5" -->
