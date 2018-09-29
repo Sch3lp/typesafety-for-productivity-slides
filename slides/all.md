@@ -72,6 +72,52 @@ Do you think you can learn about possible bugs like this faster? <!-- .element: 
 
 <|
 
+### Foray into developer laziness
+
+There are two kinds of laziness: the right kind and the wrong kind
+
+|>
+
+#### Wrong kind of laziness
+The wrong kind of laziness cuts corners.
+
+Instead of writing a Wrapper class, Strings or other primitives are passed as arguments.
+
+Sure you can write code very fast, but at the cost of explicitness. <!-- .element: class="fragment" data-fragment-index="2" -->
+
+It's not intention revealing (1 of the 4 rules of simple design). <!-- .element: class="fragment" data-fragment-index="2" -->
+
+|>
+
+In the end this costs time and productivity: every time you write a new method that is passed a primitive, you wonder what possible values this primitive can hold, and what edge cases you're supposed to take into account.
+
+|>
+
+Current "you" is lazy
+
+|>
+
+#### Right kind of laziness
+
+The right kind of laziness spends just a little extra time writing a Wrapper class.
+
+Instead of thinking what possible values a primitive can hold, you think about this once and you make those rules explicit in that Wrapper class. <!-- .element: class="fragment" data-fragment-index="2" -->
+
+Now every time this is passed into a method you no longer need to think what possible values it can be: it can only be one type with one set of rules. <!-- .element: class="fragment" data-fragment-index="2" -->
+
+|>
+
+Future "you" is lazy
+
+|>
+
+#### No need to take long
+Writing a new Wrapper class also doesn't need to take long.
+
+Let me show you.
+
+<|
+
 ### Example 4
 #### The curious case we missed
 
@@ -145,7 +191,9 @@ val booking: Booking = Booking(bookingCode = BookingCode("87654321"), name = "sn
 
 Kotlin also has extension functions, replacing "defaults" in TestBuilders
 
-fun BookingCode.Companion.defaultBookingCode("87654321") <!-- .element: class="fragment" data-fragment-index="2" -->
+fun BookingCode.Companion.defaultBookingCode() = <!-- .element: class="fragment" data-fragment-index="2" -->
+
+BookingCode("87654321") <!-- .element: class="fragment" data-fragment-index="2" -->
 
 |>
 
