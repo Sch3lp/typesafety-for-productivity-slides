@@ -20,9 +20,9 @@ Customer complaint: Booked a table, but no confirmation
 
 |>
 
-Legacy logs show error in booking code <!-- .element: class="fragment" data-fragment-index="2" -->
+Legacy logs show error in booking code
 
-    ERROR: booking code is too long (14)
+    ERROR: booking code is too long (got 14, should be 8)
     ERROR: booking code is non numerical
 
 <|
@@ -38,6 +38,13 @@ Think about <i>when</i> we encounter the bug, and how it relates to our webapp l
 At what point in the flow does the error happen? <!-- .element: class="fragment" data-fragment-index="2" -->
 
 That's right. It doesn't. It happens outside our application. <!-- .element: class="fragment" data-fragment-index="3" -->
+
+|>
+
+Let's fix the bug
+
+    ERROR: booking code is too long (got 14, should be 8)
+    ERROR: booking code is non numerical
 
 <|
 
@@ -74,8 +81,6 @@ Let's see what tests break this time.
 At what point in the flow does the error happen this time?
 
 How do we prevent these kinds of bugs in the future? <!-- .element: class="fragment" data-fragment-index="2" -->
-
-Think we can learn about similar bugs faster? <!-- .element: class="fragment" data-fragment-index="3" -->
 
 <|
 
