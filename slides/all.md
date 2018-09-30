@@ -300,3 +300,41 @@ Not using Types **costs** time:
 <|
 
 # Thanks!
+
+<|
+
+## Stuff to explore
+
+Kotlin is still only _half strong typed_
+
+Pure FP languages (like Elm) really are _strong typed_, which comes with even more productivity gains
+
+|>
+
+An important notion is I/O:
+
+The boundary between _the real world_ and a _type safe system_
+
+|>
+
+Elm interacts with REST API's too 
+
+AKA strings that can mean anything
+
+The boundary lies in the Json.Decode Elm library
+
+|>
+
+Elm also interacts with JavaScript or your browser
+
+AKA other untyped objects
+
+Here the boundary lies in Elm's _Ports_
+
+<|
+
+## Go and explore!
+
+* [Kotlin](https://kotlinlang.org/docs/reference/)
+* [Elm](https://guide.elm-lang.org/)
+* [Elm Ports](https://hackernoon.com/how-elm-ports-work-with-a-picture-just-one-25144ba43cdd)
