@@ -91,6 +91,11 @@ There are two kinds of laziness: the right kind and the wrong kind
 |>
 
 #### Wrong kind of laziness
+
+_Current you_ is lazy
+
+|>
+
 The wrong kind of laziness cuts corners.
 
 Strings and other primitives are passed as arguments.
@@ -105,21 +110,17 @@ When TDD'ing a method that takes a primitive theoretically you should test all e
 
 |>
 
-_Current you_ is lazy
+#### Right kind of laziness
+
+_Future you_ is lazy
 
 |>
-
-#### Right kind of laziness
 
 The right kind of laziness is defensive
 
 Think about edge cases once and make rules explicit in a (Wrapper) class <!-- .element: class="fragment" data-fragment-index="2" -->
 
 Wrapper passed as argument eliminates testing for edge cases on that method <!-- .element: class="fragment" data-fragment-index="2" -->
-
-|>
-
-_Future you_ is lazy
 
 |>
 
