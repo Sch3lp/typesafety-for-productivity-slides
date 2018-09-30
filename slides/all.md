@@ -88,33 +88,33 @@ There are two kinds of laziness: the right kind and the wrong kind
 #### Wrong kind of laziness
 The wrong kind of laziness cuts corners.
 
-Instead of writing a Wrapper class, Strings or other primitives are passed as arguments.
-
-Sure you can write code very fast, but at the cost of explicitness. <!-- .element: class="fragment" data-fragment-index="2" -->
+Strings and other primitives are passed as arguments.
 
 It's not intention revealing (1 of the 4 rules of simple design). <!-- .element: class="fragment" data-fragment-index="2" -->
 
 |>
 
-In the end this costs time and productivity: every time you write a new method that is passed a primitive, you wonder what possible values this primitive can hold, and what edge cases you're supposed to take into account.
+In the end this costs productivity: 
+
+When TDD'ing a method that takes a primitive theoretically you should test all edge cases
 
 |>
 
-Current "you" is lazy
+_Current you_ is lazy
 
 |>
 
 #### Right kind of laziness
 
-The right kind of laziness spends just a little extra time writing a Wrapper class.
+The right kind of laziness is defensive
 
-Instead of thinking what possible values a primitive can hold, you think about this once and you make those rules explicit in that Wrapper class. <!-- .element: class="fragment" data-fragment-index="2" -->
+Think about edge cases once and make rules explicit in a (Wrapper) class <!-- .element: class="fragment" data-fragment-index="2" -->
 
-Now every time this is passed into a method you no longer need to think what possible values it can be: it can only be one type with one set of rules. <!-- .element: class="fragment" data-fragment-index="2" -->
+Wrapper passed as argument eliminates testing for edge cases on that method <!-- .element: class="fragment" data-fragment-index="2" -->
 
 |>
 
-Future "you" is lazy
+_Future you_ is lazy
 
 |>
 
@@ -132,7 +132,7 @@ This is me gambling you didn't pay too much attention :)
 
 |>
 
-Who can tell me what we missed? More specifically in the Booking. <!-- .element: class="fragment" data-fragment-index="2" -->
+Who can tell me what we missed? More specifically in the Booking.bookingCodeAsString(). <!-- .element: class="fragment" data-fragment-index="2" -->
 
 Eventhough BookingCode can be null, our Booking always expects there to be one. <!-- .element: class="fragment" data-fragment-index="3" -->
 
@@ -142,21 +142,23 @@ Thanks for NPE's Java! <!-- .element: class="fragment" data-fragment-index="4" -
 
 ### I guess we fix it with Optional?
 
+Let's check out the code
+
 <|
 
 ### Java's Optional
 
 Optional **does** express that some property might not exist.
 
-But it's not very easy to work with.
+But it's not very easy to work with: long chains of .map add verbosity
 
-And it's not serializable.
+And it's not serializable <!-- .element: class="fragment" data-fragment-index="2" -->
 
-And you're not allowed to actually **use** it as a field.
+And you're not allowed to actually **use** it as a field <!-- .element: class="fragment" data-fragment-index="3" -->
 
-Or use it as a parameter for that matter.
+Or use it as a parameter for that matter <!-- .element: class="fragment" data-fragment-index="3" -->
 
-This really just makes Optional a glorified if-statement.
+Optional == glorified if-statement <!-- .element: class="fragment" data-fragment-index="4" -->
 
 <|
 
