@@ -1,10 +1,7 @@
 package be.swsb.typesafety.example5.external.legacybookingsystem.acl
 
-import be.swsb.typesafety.example5.domain.booking.Booking
+import be.swsb.typesafety.example5.domain.booking.*
 import be.swsb.typesafety.example5.domain.booking.Booking.Companion.booking
-import be.swsb.typesafety.example5.domain.booking.BookingCode
-import be.swsb.typesafety.example5.domain.booking.BookingRepository
-import be.swsb.typesafety.example5.domain.booking.randomBookingCode
 import be.swsb.typesafety.example5.external.legacybookingsystem.acl.mapper.LegacyMapper
 import be.swsb.typesafety.example5.external.legacybookingsystem.acl.client.LegacyClient
 import be.swsb.typesafety.example5.external.legacybookingsystem.acl.types.LegacyBinder
@@ -38,8 +35,9 @@ internal class LegacyBookingServiceTest : UnitTest() {
         val mappedBookings = Arrays.asList(booking1, booking2)
         val expectedBinder = LegacyBinder.collect(mappedBookings)
 
-        val bookingToBeSent1 = booking(BookingCode.randomBookingCode())
-        val bookingToBeSent2 = booking(BookingCode.randomBookingCode())
+
+        val bookingToBeSent1 = Booking.defaultBooking()
+        val bookingToBeSent2 = Booking.defaultBooking()
         val bookings = Arrays.asList<Booking>(bookingToBeSent1, bookingToBeSent2)
         whenever(repo.findUnsentBookings()).thenReturn(bookings)
 
