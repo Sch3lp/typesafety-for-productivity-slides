@@ -6,21 +6,30 @@ _How Types can increase developer productivity_
 
 ### Context: A Booking webapp
 
-We're rewriting a legacy application that would store bookings (hotel room, kayaks, dinner tables, ...)
+Rewrite of a legacy application to handle dinner table bookings
 
-Bookings are still handled in the old legacy app by the backoffice, so we'll need to forward our Bookings made by the webapp.
+Actual handling still in legacy, data entry in web-app
 
 |>
 
-`BookingCode` is just a `String`
+Booking code is entered in a text input field
 
-...or is it? <!-- .element: class="fragment" data-fragment-index="2" -->
+|>
+
+Customer complaint: Booked a table, but no confirmation
+
+|>
+
+Legacy logs show error in booking code <!-- .element: class="fragment" data-fragment-index="2" -->
+
+    ERROR: booking code is too long (14)
+    ERROR: booking code is non numerical
 
 <|
 
 ### Example 1
 
-Where we still were naive and thought `BookingCode` was just a `String`.
+Let's find the bug
 
 |>
 
@@ -34,29 +43,27 @@ That's right. It doesn't. It happens outside our application. <!-- .element: cla
 
 ### Example 2
 
-Let's advance it to at least occur inside our application.
+Advance point of failure to our web application
 
 |>
 
-Here we just introduced domain validation on a `Booking`.
+Introduced domain validation on a `Booking`.
 
-Let's see what code breaks.  <!-- .element: class="fragment" data-fragment-index="2" -->
+Let's see what code breaks in tests.  <!-- .element: class="fragment" data-fragment-index="2" -->
 
 |>
 
-Again, at what point in the flow does the error happen?
+At what point in the flow does the error happen this time?
 
-Think about when you'd be debugging, what's your next intuition? <!-- .element: class="fragment" data-fragment-index="2" -->
-
-If you thought to move up the BREAKING POINT in the flow, you're on to something. <!-- .element: class="fragment" data-fragment-index="3" -->
+Good enough? <!-- .element: class="fragment" data-fragment-index="2" -->
 
 <|
 
 ### Example 3
 
-Let's advance it to occur as soon as it enters our application: in the Resource.
+Advance point of failure to as soon as it enters our application: in the REST api class.
 
-We'll use a Wrapper object called BookingCode that encapsulates its rules.
+Let's introduce a Wrapper object BookingCode and make it compile. <!-- .element: class="fragment" data-fragment-index="2" -->
 
 |>
 
@@ -64,11 +71,11 @@ Let's see what tests break this time.
 
 |>
 
-Again, at what point in the flow does the error happen?
+At what point in the flow does the error happen this time?
 
 How do we prevent these kinds of bugs in the future? <!-- .element: class="fragment" data-fragment-index="2" -->
 
-Do you think you can learn about possible bugs like this faster? <!-- .element: class="fragment" data-fragment-index="3" -->
+Think we can learn about similar bugs faster? <!-- .element: class="fragment" data-fragment-index="3" -->
 
 <|
 
