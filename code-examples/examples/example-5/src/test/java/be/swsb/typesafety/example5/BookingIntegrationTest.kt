@@ -1,11 +1,10 @@
 package be.swsb.typesafety.example5
 
 import be.swsb.typesafety.example5.domain.booking.BookingRepository
-import be.swsb.typesafety.example5.external.legacybookingsystem.LegacyMapper
+import be.swsb.typesafety.example5.external.legacybookingsystem.acl.mapper.LegacyMapper
 import be.swsb.typesafety.example5.external.legacybookingsystem.acl.LegacyBookingService
 import be.swsb.typesafety.example5.external.legacybookingsystem.acl.client.LegacyClient
 import be.swsb.typesafety.example5.external.legacybookingsystem.acl.types.LegacyBinder
-import be.swsb.typesafety.example5.external.legacybookingsystem.acl.types.LegacyBookingType
 import be.swsb.typesafety.example5.rest.booking.BookingResource
 import be.swsb.typesafety.example5.service.booking.BookingService
 import org.assertj.core.api.Assertions.assertThat

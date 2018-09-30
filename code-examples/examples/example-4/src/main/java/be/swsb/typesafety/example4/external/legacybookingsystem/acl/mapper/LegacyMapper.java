@@ -1,4 +1,4 @@
-package be.swsb.typesafety.example4.external.legacybookingsystem;
+package be.swsb.typesafety.example4.external.legacybookingsystem.acl.mapper;
 
 import be.swsb.typesafety.example4.domain.booking.Booking;
 import be.swsb.typesafety.example4.external.legacybookingsystem.acl.types.LegacyBookingType;

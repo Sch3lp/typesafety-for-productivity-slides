@@ -3,7 +3,7 @@ package be.swsb.typesafety.example1;
 import be.swsb.typesafety.example1.domain.booking.BookingRepository;
 import be.swsb.typesafety.example1.rest.booking.BookingResource;
 import be.swsb.typesafety.example1.service.booking.BookingService;
-import be.swsb.typesafety.example1.external.legacybookingsystem.LegacyMapper;
+import be.swsb.typesafety.example1.external.legacybookingsystem.acl.mapper.LegacyMapper;
 import be.swsb.typesafety.example1.external.legacybookingsystem.acl.LegacyBookingService;
 import be.swsb.typesafety.example1.external.legacybookingsystem.acl.client.LegacyClient;
 import be.swsb.typesafety.example1.external.legacybookingsystem.acl.types.LegacyBinder;

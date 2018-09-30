@@ -1,8 +1,8 @@
-package be.swsb.typesafety.example4.external.legacybookingsystem;
+package be.swsb.typesafety.example4.external.legacybookingsystem.acl.mapper;
 
 import be.swsb.typesafety.example4.domain.booking.Booking;
 import be.swsb.typesafety.example4.domain.booking.BookingCode;
-import be.swsb.typesafety.example4.domain.booking.BookingTestBuilder;
+import be.swsb.typesafety.example4.external.legacybookingsystem.acl.mapper.LegacyMapper;
 import be.swsb.typesafety.example4.external.legacybookingsystem.acl.types.LegacyBookingType;
 import be.swsb.typesafety.test.UnitTest;
 import org.junit.jupiter.api.Test;

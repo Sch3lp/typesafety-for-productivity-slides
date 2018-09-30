@@ -1,10 +1,9 @@
 package be.swsb.typesafety.example4;
 
-import be.swsb.typesafety.example4.domain.booking.BookingCode;
 import be.swsb.typesafety.example4.domain.booking.BookingRepository;
 import be.swsb.typesafety.example4.rest.booking.BookingResource;
 import be.swsb.typesafety.example4.service.booking.BookingService;
-import be.swsb.typesafety.example4.external.legacybookingsystem.LegacyMapper;
+import be.swsb.typesafety.example4.external.legacybookingsystem.acl.mapper.LegacyMapper;
 import be.swsb.typesafety.example4.external.legacybookingsystem.acl.LegacyBookingService;
 import be.swsb.typesafety.example4.external.legacybookingsystem.acl.client.LegacyClient;
 import be.swsb.typesafety.example4.external.legacybookingsystem.acl.types.LegacyBinder;
@@ -14,9 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import static be.swsb.typesafety.example4.domain.booking.BookingCodeForTests.randomBookingCode;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BookingIntegrationTest {
