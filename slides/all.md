@@ -159,11 +159,13 @@ But it's not very easy to work with: long chains of .map add verbosity
 
 And it's not serializable <!-- .element: class="fragment" data-fragment-index="2" -->
 
-And you're not allowed to actually **use** it as a field <!-- .element: class="fragment" data-fragment-index="3" -->
+And you're not allowed to actually USE it as a field <!-- .element: class="fragment" data-fragment-index="3" -->
 
 Or use it as a parameter for that matter <!-- .element: class="fragment" data-fragment-index="3" -->
 
-Optional == glorified if-statement <!-- .element: class="fragment" data-fragment-index="4" -->
+|>
+
+#### Optional is a glorified if-statement
 
 <|
 
@@ -181,31 +183,38 @@ And there is! <!-- .element: class="fragment" data-fragment-index="2" -->
 
 Kotlin has the concept of optionality built-in
 
-val code: BookingCode  //non optional <!-- .element: class="fragment" data-fragment-index="2" -->
-
-val code: BookingCode? // optional <!-- .element: class="fragment" data-fragment-index="3" -->
+    val code: BookingCode? //optional
+    val code: BookingCode  //non optional
 
 |>
 
 ## Immutability
 
-Kotlin also has the concept of immutability built-in:
+Kotlin also has immutability built-in:
 
-data class BookingCode(val code: String) <!-- .element: class="fragment" data-fragment-index="2" -->
+    data class BookingCode(val code: String)
 
-No longer do you have to write tedious equals() and hashcode() reflection-equals implementations! <!-- .element: class="fragment" data-fragment-index="3" -->
+No longer do you have to write tedious equals() and hashcode() reflection-equals implementations!
 
 |>
 
 ## Closed by default
 
-You ever really tried to prevent access to methods or classes of an Aggregate in Java?
+You ever **really** tried to prevent access to methods or classes of an Aggregate in Java?
+
+|>
 
 Here's how you do it in Kotlin:
 
-class Booking() <!-- .element: class="fragment" data-fragment-index="2" -->
+    class Booking()
 
-In Kotlin if you want a public class or method you'll have to add the "open" modifier to it <!-- .element: class="fragment" data-fragment-index="3" -->
+|>
+
+If you want a public class or method you'll have to add the `open` modifier to it:
+
+    open class Booking() {
+        open fun reschedule(val nextDate: LocalDateTime) { ... }
+    }
 
 |>
 
@@ -213,7 +222,11 @@ In Kotlin if you want a public class or method you'll have to add the "open" mod
 
 Kotlin also has named parameters, essentially removing the need for TestBuilders
 
-val booking: Booking = Booking(bookingCode = BookingCode("87654321"), name = "snarf") <!-- .element: class="fragment" data-fragment-index="2" -->
+    val booking = 
+        Booking(
+            bookingCode = BookingCode("87654321"), 
+            name = "snarf"
+        )
 
 |>
 
@@ -221,14 +234,14 @@ val booking: Booking = Booking(bookingCode = BookingCode("87654321"), name = "sn
 
 Kotlin also has extension functions, replacing "defaults" in TestBuilders
 
-fun BookingCode.Companion.defaultBookingCode() = <!-- .element: class="fragment" data-fragment-index="2" -->
-
-BookingCode("87654321") <!-- .element: class="fragment" data-fragment-index="2" -->
+    fun BookingCode.Companion.defaultBookingCode() = 
+        BookingCode("87654321")
 
 |>
 
 ## Sealed classes (aka traits, aka union types)
-Kotlin also has "sealed classes" allowing you to be more expressive with your types.
+
+_Sealed classes_ allow you to be even more expressive with your types.
 
 |>
 
@@ -273,10 +286,17 @@ This is about as "early" as one can get into knowing when a bug would happen.
 
 # Conclusion
 
-Not using Types **costs** time, so:
+Not using Types **costs** time:
 
-* Write Wrapper classes (from the start!) <!-- .element: class="fragment" data-fragment-index="2" -->
-* Kotlin has a set of features that can help with that  <!-- .element: class="fragment" data-fragment-index="3" -->
-* Use Sealed classes whenever you can to learn asap about potential bugs <!-- .element: class="fragment" data-fragment-index="4" -->
+* Unclear what the rules are of a primitive (not intent revealing) <!-- .element: class="fragment" data-fragment-index="2" -->
+* Theoretically TDD all edge cases <!-- .element: class="fragment" data-fragment-index="2" -->
 
-Thanks! <!-- .element: class="fragment" data-fragment-index="5" -->
+|>
+
+* Write Wrapper classes (from the start!)
+* Kotlin has a set of features that can help with that  <!-- .element: class="fragment" data-fragment-index="2" -->
+* Use Sealed classes whenever you can, to learn asap about potential bugs <!-- .element: class="fragment" data-fragment-index="3" -->
+
+<|
+
+# Thanks!
